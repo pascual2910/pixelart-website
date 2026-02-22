@@ -88,6 +88,24 @@ export const EXAMPLES = [
     before: "/examples/anime.webp",
     after: "/examples/anime-pixel.png",
   },
+  {
+    name: "Girl with a Pearl Earring",
+    subtitle: "Hexagon variant",
+    shape: "Hexagon",
+    colorMode: "Posterized",
+    colors: 8,
+    before: "/examples/pearl-earring.jpg",
+    after: "/examples/pearl-earring-hex-pixel.png",
+  },
+  {
+    name: "Statue of Liberty",
+    subtitle: "Triangle grid",
+    shape: "Triangle",
+    colorMode: "Full color",
+    colors: 12,
+    before: "/examples/statue-of-liberty.jpg",
+    after: "/examples/statue-of-liberty-tri-pixel.png",
+  },
 ];
 
 export const STEPS = [
