@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { EXAMPLES } from "@/lib/constants";
+import { BeforeAfter } from "./BeforeAfter";
 
 function ExampleCard({
   example,
@@ -11,15 +11,11 @@ function ExampleCard({
 }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-panel shadow-sm transition-shadow hover:shadow-lg">
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
-          src={example.after}
-          alt={`${example.name} - ${example.shape} pixel art`}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
-      </div>
+      <BeforeAfter
+        beforeSrc={example.before}
+        afterSrc={example.after}
+        alt={example.name}
+      />
       <div className="p-4">
         <h3 className="font-semibold">{example.name}</h3>
         <p className="mt-1 text-sm text-text-secondary">{example.subtitle}</p>
@@ -48,7 +44,7 @@ export function Examples() {
     setActive((i) => (i === EXAMPLES.length - 1 ? 0 : i + 1));
 
   return (
-    <section id="examples" className="scroll-mt-16 bg-surface py-20 sm:py-28">
+    <section id="examples" className="scroll-mt-16 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">

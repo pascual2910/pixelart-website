@@ -71,7 +71,7 @@ function FeatureIcon({ icon }: { icon: string }) {
 
 export function Features() {
   return (
-    <section id="features" className="scroll-mt-16 py-20 sm:py-28">
+    <section id="features" className="scroll-mt-16 bg-surface py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
