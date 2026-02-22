@@ -15,14 +15,22 @@ export function Cta() {
             Ready to create pixel art?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-lg text-white/80">
-            Start converting images for free — no account required.
+            Start converting images for free — no credit card required.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
               href={APP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex rounded-lg bg-white px-6 py-3 text-base font-semibold text-accent shadow-lg transition-all hover:bg-white/90 hover:shadow-xl"
+            >
+              Sign Up for Free
+            </a>
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-lg border border-white/30 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
             >
               Open the Editor
             </a>

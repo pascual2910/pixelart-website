@@ -1,5 +1,5 @@
 export const APP_URL =
-  process.env.NEXT_PUBLIC_APP_URL ?? "https://pixel-art-delta-smoky.vercel.app";
+  process.env.NEXT_PUBLIC_APP_URL ?? "https://pixel-art-eta-ashy.vercel.app";
 
 export const SITE = {
   name: "Pixel Art Converter",

@@ -23,7 +23,7 @@ export function Hero() {
             rel="noopener noreferrer"
             className="inline-flex rounded-lg bg-accent px-6 py-3 text-base font-medium text-white shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-xl hover:shadow-accent/30"
           >
-            Open the Editor
+            Sign Up for Free
           </a>
           <a
             href="#examples"
@@ -32,6 +32,9 @@ export function Hero() {
             See Examples
           </a>
         </div>
+        <p className="mt-4 text-sm text-text-muted">
+          No credit card required. Start creating instantly.
+        </p>
       </div>
     </section>
   );
