@@ -38,12 +38,12 @@ export function Header() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <a
-            href={APP_URL}
+            href={`${APP_URL}/editor`}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover sm:inline-flex"
           >
-            Open App
+            Open Editor
           </a>
 
           {/* Mobile hamburger */}
@@ -93,12 +93,12 @@ export function Header() {
               </a>
             ))}
             <a
-              href={APP_URL}
+              href={`${APP_URL}/editor`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 rounded-lg bg-accent px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-accent-hover"
             >
-              Open App
+              Open Editor
             </a>
           </div>
         </nav>

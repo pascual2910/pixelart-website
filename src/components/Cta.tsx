@@ -27,7 +27,7 @@ export function Cta() {
               Sign Up for Free
             </a>
             <a
-              href={APP_URL}
+              href={`${APP_URL}/editor`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex rounded-lg border border-white/30 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"

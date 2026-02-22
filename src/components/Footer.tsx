@@ -37,7 +37,7 @@ export function Footer() {
               <ul className="mt-3 space-y-2 text-text-secondary">
                 <li>
                   <a
-                    href={APP_URL}
+                    href={`${APP_URL}/editor`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-foreground"
