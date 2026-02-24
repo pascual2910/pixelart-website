@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { APP_URL } from "@/lib/constants";
@@ -39,7 +39,7 @@ function PricingNavItem() {
               href={`${APP_URL}/?mode=signup`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 block rounded-lg bg-accent px-3 py-1.5 text-center text-xs font-medium text-white transition-colors hover:bg-accent-hover"
+              className="mt-3 block rounded-lg bg-accent px-3 py-1.5 text-center text-xs font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-accent-hover"
             >
               Sign Up for Free
             </a>
@@ -52,9 +52,42 @@ function PricingNavItem() {
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  // Escape key closes mobile menu
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [menuOpen]);
+
+  // Scroll-spy for active nav section
+  useEffect(() => {
+    const sectionIds = NAV_LINKS.map((link) => link.href.slice(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        }
+      },
+      { threshold: 0.3, rootMargin: "-80px 0px -50% 0px" },
+    );
+
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
+    <header className="fixed top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#" className="flex items-center gap-2 font-semibold">
           <Logo className="h-6 w-6" />
@@ -67,7 +100,11 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-text-secondary transition-colors hover:text-foreground"
+              className={`relative text-sm transition-colors hover:text-foreground after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full ${
+                activeSection === link.href
+                  ? "text-foreground after:w-full"
+                  : "text-text-secondary after:w-0"
+              }`}
             >
               {link.label}
             </a>
@@ -81,7 +118,7 @@ export function Header() {
             href={`${APP_URL}/editor`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover sm:inline-flex"
+            className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-accent-hover sm:inline-flex"
           >
             Open Editor
           </a>
@@ -90,6 +127,7 @@ export function Header() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
             className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-surface md:hidden"
           >
             <svg
@@ -118,20 +156,34 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile backdrop */}
       {menuOpen && (
-        <nav className="border-t border-border bg-background px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-3">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-sm text-text-secondary transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            ))}
+        <div
+          className="fixed inset-0 top-14 z-40 bg-black/20 md:hidden"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile menu */}
+      <nav
+        className={`relative z-50 overflow-hidden bg-background transition-all duration-300 md:hidden ${
+          menuOpen
+            ? "max-h-80 border-t border-border"
+            : "max-h-0"
+        }`}
+      >
+        <div className="flex flex-col gap-3 px-4 py-4">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="text-sm text-text-secondary transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+          <div>
             <a
               href="/pricing"
               onClick={() => setMenuOpen(false)}
@@ -142,17 +194,20 @@ export function Header() {
                 Free
               </span>
             </a>
-            <a
-              href={`${APP_URL}/editor`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 rounded-lg bg-accent px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-accent-hover"
-            >
-              Open Editor
-            </a>
+            <p className="mt-1 text-xs text-text-muted">
+              Sign up now and lock in free access forever.
+            </p>
           </div>
-        </nav>
-      )}
+          <a
+            href={`${APP_URL}/editor`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 rounded-lg bg-accent px-4 py-2 text-center text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-accent-hover"
+          >
+            Open Editor
+          </a>
+        </div>
+      </nav>
     </header>
   );
 }

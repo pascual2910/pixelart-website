@@ -29,13 +29,13 @@ export function Hero() {
               href={`${APP_URL}/?mode=signup`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-lg bg-accent px-6 py-3 text-base font-medium text-white shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-xl hover:shadow-accent/30"
+              className="inline-flex rounded-lg bg-accent px-6 py-3 text-base font-medium text-white shadow-lg shadow-accent/25 transition-all hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-xl hover:shadow-accent/30"
             >
               Sign Up for Free
             </a>
             <a
               href="#examples"
-              className="inline-flex rounded-lg border border-border px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-surface"
+              className="inline-flex rounded-lg border border-border px-6 py-3 text-base font-medium text-foreground transition-all hover:-translate-y-0.5 hover:bg-surface"
             >
               See Examples
             </a>

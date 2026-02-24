@@ -4,6 +4,9 @@ import { APP_URL, SITE } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Pricing",
   description: `${SITE.name} pricing — currently free for early adopters. Sign up now and keep free access forever.`,
+  alternates: {
+    canonical: "/pricing",
+  },
 };
 
 function CheckIcon() {
@@ -116,7 +119,7 @@ export default function PricingPage() {
                 href={`${APP_URL}/?mode=signup`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block rounded-lg bg-accent px-6 py-3 text-center text-base font-medium text-white shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-xl hover:shadow-accent/30"
+                className="block rounded-lg bg-accent px-6 py-3 text-center text-base font-medium text-white shadow-lg shadow-accent/25 transition-all hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-xl hover:shadow-accent/30"
               >
                 Sign Up for Free
               </a>

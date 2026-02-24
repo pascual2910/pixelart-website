@@ -4,6 +4,9 @@ import { SITE } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Terms and Conditions",
   description: `Terms and Conditions for ${SITE.name}. Read the rules and guidelines for using our service.`,
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 export default function TermsAndConditions() {

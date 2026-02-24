@@ -20,14 +20,31 @@ export function BeforeAfter({ beforeSrc, afterSrc, alt }: BeforeAfterProps) {
     setPosition((x / rect.width) * 100);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      setPosition((p) => Math.max(0, p - 2));
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      setPosition((p) => Math.min(100, p + 2));
+    }
+  };
+
   return (
     <div
       ref={containerRef}
+      role="slider"
+      tabIndex={0}
+      aria-label={`Compare original and pixel art for ${alt}`}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={Math.round(position)}
       className="relative aspect-[4/3] w-full cursor-col-resize select-none overflow-hidden"
       onMouseMove={(e) => {
         if (e.buttons === 1) handleMove(e.clientX);
       }}
       onTouchMove={(e) => handleMove(e.touches[0].clientX)}
+      onKeyDown={handleKeyDown}
     >
       {/* After image (full, behind) */}
       <Image
@@ -35,7 +52,7 @@ export function BeforeAfter({ beforeSrc, afterSrc, alt }: BeforeAfterProps) {
         alt={`${alt} - pixel art`}
         fill
         className="object-cover"
-        sizes="(max-width: 768px) 100vw, 672px"
+        sizes="(max-width: 640px) calc(100vw - 2rem), 672px"
       />
 
       {/* Before image (clipped) */}
@@ -48,7 +65,7 @@ export function BeforeAfter({ beforeSrc, afterSrc, alt }: BeforeAfterProps) {
           alt={`${alt} - original`}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 100vw, 672px"
+          sizes="(max-width: 640px) calc(100vw - 2rem), 672px"
         />
       </div>
 

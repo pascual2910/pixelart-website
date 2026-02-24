@@ -70,7 +70,7 @@ export function Examples() {
             <button
               onClick={prev}
               aria-label="Previous example"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-panel text-text-secondary transition-colors hover:bg-surface hover:text-foreground"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-panel text-text-secondary transition-all hover:-translate-y-0.5 hover:bg-surface hover:text-foreground"
             >
               <svg
                 width="18"
@@ -92,7 +92,7 @@ export function Examples() {
             <button
               onClick={next}
               aria-label="Next example"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-panel text-text-secondary transition-colors hover:bg-surface hover:text-foreground"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-panel text-text-secondary transition-all hover:-translate-y-0.5 hover:bg-surface hover:text-foreground"
             >
               <svg
                 width="18"

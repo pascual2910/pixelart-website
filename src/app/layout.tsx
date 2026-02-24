@@ -8,11 +8,13 @@ import "./globals.css";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -43,20 +45,14 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${SITE.name} - ${SITE.tagline}`,
     description: SITE.description,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: `${SITE.name} - ${SITE.tagline}`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} - ${SITE.tagline}`,
     description: SITE.description,
-    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "/",
   },
   icons: {
     icon: "/favicon.svg",
@@ -69,12 +65,15 @@ const jsonLd = {
   "@type": "SoftwareApplication",
   name: SITE.name,
   description: SITE.description,
+  url: SITE.url,
   applicationCategory: "DesignApplication",
   operatingSystem: "Web",
+  browserRequirements: "Requires a modern web browser with JavaScript enabled",
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
   },
   featureList: [
     "Image to pixel art conversion",
@@ -84,6 +83,7 @@ const jsonLd = {
     "Export to PNG, SVG, PDF, JSON, CSV, Markdown",
     "Share creations via link",
   ],
+  screenshot: `${SITE.url}/examples/pearl-earring-pixel.png`,
 };
 
 export default function RootLayout({

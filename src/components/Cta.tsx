@@ -22,7 +22,7 @@ export function Cta() {
               href={`${APP_URL}/?mode=signup`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-lg bg-white px-6 py-3 text-base font-semibold text-accent shadow-lg transition-all hover:bg-white/90 hover:shadow-xl"
+              className="inline-flex rounded-lg bg-white px-6 py-3 text-base font-semibold text-accent shadow-lg transition-all hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-xl"
             >
               Sign Up for Free
             </a>
@@ -30,7 +30,7 @@ export function Cta() {
               href={`${APP_URL}/editor`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-lg border border-white/30 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
+              className="inline-flex rounded-lg border border-white/30 px-6 py-3 text-base font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
             >
               Open the Editor
             </a>
