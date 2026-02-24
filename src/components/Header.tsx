@@ -11,6 +11,45 @@ const NAV_LINKS = [
   { label: "How It Works", href: "#how-it-works" },
 ];
 
+function PricingNavItem() {
+  return (
+    <div className="group/pricing relative">
+      <a
+        href="/pricing"
+        className="flex items-center gap-1.5 text-sm text-text-secondary transition-colors hover:text-foreground"
+      >
+        Pricing
+        <span className="rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-emerald-600 dark:text-emerald-400">
+          Free
+        </span>
+      </a>
+
+      {/* Hover popover */}
+      <div className="pointer-events-none absolute left-1/2 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover/pricing:pointer-events-auto group-hover/pricing:opacity-100">
+        <div className="relative -translate-x-1/2">
+          {/* Arrow */}
+          <div className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-border bg-panel" />
+
+          <div className="w-64 rounded-xl border border-border bg-panel p-4 shadow-lg">
+            <p className="text-sm font-semibold">Currently Free</p>
+            <p className="mt-1.5 text-xs leading-relaxed text-text-secondary">
+              Sign up now and lock in free access forever. Limited time offer.
+            </p>
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 block rounded-lg bg-accent px-3 py-1.5 text-center text-xs font-medium text-white transition-colors hover:bg-accent-hover"
+            >
+              Sign Up for Free
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -33,6 +72,7 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <PricingNavItem />
         </nav>
 
         <div className="flex items-center gap-2">
@@ -92,6 +132,16 @@ export function Header() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/pricing"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-1.5 text-sm text-text-secondary transition-colors hover:text-foreground"
+            >
+              Pricing
+              <span className="rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-emerald-600 dark:text-emerald-400">
+                Free
+              </span>
+            </a>
             <a
               href={`${APP_URL}/editor`}
               target="_blank"
