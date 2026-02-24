@@ -19,7 +19,7 @@ export function Cta() {
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
-              href={APP_URL}
+              href={`${APP_URL}/?mode=signup`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex rounded-lg bg-white px-6 py-3 text-base font-semibold text-accent shadow-lg transition-all hover:bg-white/90 hover:shadow-xl"

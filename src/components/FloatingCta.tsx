@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 export function FloatingCta() {
   return (
     <a
-      href={APP_URL}
+      href={`${APP_URL}/?mode=signup`}
       target="_blank"
       rel="noopener noreferrer"
       style={

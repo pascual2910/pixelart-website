@@ -36,7 +36,7 @@ function PricingNavItem() {
               Sign up now and lock in free access forever. Limited time offer.
             </p>
             <a
-              href={APP_URL}
+              href={`${APP_URL}/?mode=signup`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 block rounded-lg bg-accent px-3 py-1.5 text-center text-xs font-medium text-white transition-colors hover:bg-accent-hover"

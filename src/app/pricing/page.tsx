@@ -113,7 +113,7 @@ export default function PricingPage() {
 
             <div className="mt-8">
               <a
-                href={APP_URL}
+                href={`${APP_URL}/?mode=signup`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-lg bg-accent px-6 py-3 text-center text-base font-medium text-white shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-xl hover:shadow-accent/30"
